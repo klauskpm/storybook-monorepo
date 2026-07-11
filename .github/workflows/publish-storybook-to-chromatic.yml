@@ -20,13 +20,16 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       # Goes to the correct workspace
-#      - run: cd apps/react-storybook
-      # Runs builds project and deploy to chromatic
-      - uses: chromaui/action@latest
-        # Options required for Chromatic's GitHub Action
-        with:
-          #👇 Chromatic projectToken for the specific project
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
-          #👇 Working directory
-          workingDir: apps/react-storybook
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: cd apps/react-storybook
+      # Deploys to chromatic
+      # 👇 Remember to change the variable name for the next project/app
+      - run: bunx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+#      # Runs builds project and deploy to chromatic
+#      - uses: chromaui/action@latest
+#        # Options required for Chromatic's GitHub Action
+#        with:
+#          #👇 Chromatic projectToken for the specific project
+#          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+#          #👇 Working directory
+#          workingDir: apps/react-storybook
+#          token: ${{ secrets.GITHUB_TOKEN }}
