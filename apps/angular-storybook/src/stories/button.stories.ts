@@ -43,7 +43,7 @@ export const Large: Story = {
 
 export const Small: Story = {
   args: {
-    size: 'large',
+    size: 'small',
     label: 'Button',
   },
 };
