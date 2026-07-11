@@ -1,7 +1,5 @@
 import './button.css';
 
-// another change to see a new deploy
-
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
   primary?: boolean;
