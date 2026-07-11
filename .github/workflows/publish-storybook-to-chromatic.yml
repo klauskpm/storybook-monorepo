@@ -1,0 +1,29 @@
+name: Publish react-storybook to Chromatic
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/react-storybook/**'
+
+jobs:
+  publish-to-chromatic:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'yarn'
+      - run: yarn
+      #👇 Adds Chromatic as a step in the workflow
+      - uses: chromaui/action@latest
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken,
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}
