@@ -23,13 +23,15 @@ jobs:
       - run: cd apps/react-storybook
       # Deploys to chromatic
       # 👇 Remember to change the variable name for the next project/app
-      - run: bunx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
-#      # Runs builds project and deploy to chromatic
-#      - uses: chromaui/action@latest
-#        # Options required for Chromatic's GitHub Action
-#        with:
-#          #👇 Chromatic projectToken for the specific project
-#          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
-#          #👇 Working directory
-#          workingDir: apps/react-storybook
-#          token: ${{ secrets.GITHUB_TOKEN }}
+#      - run: bunx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+      # Runs builds project and deploy to chromatic
+      - uses: chromaui/action@latest
+        # Options required for Chromatic's GitHub Action
+        with:
+          # 👇 Chromatic projectToken for the specific project
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+          # 👇 Working directory
+          workingDir: apps/react-storybook
+          # Telling chromatic to use bun to build the project
+          buildCommand: bun run build-storybook
+          token: ${{ secrets.GITHUB_TOKEN }}
