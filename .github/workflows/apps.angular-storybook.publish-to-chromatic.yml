@@ -13,7 +13,7 @@ jobs:
     with:
       workingDir: 'apps/angular-storybook'
     secrets:
-      chromaticProjectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
+      chromaticProjectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_ANGULAR_STORYBOOK }}
       githubToken: ${{ secrets.GITHUB_TOKEN }}
 #    # Operating System
 #    runs-on: ubuntu-latest
