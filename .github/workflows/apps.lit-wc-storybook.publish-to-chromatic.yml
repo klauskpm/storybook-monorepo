@@ -1,0 +1,19 @@
+name: Publish lit-wc-storybook to Chromatic
+on:
+  push:
+    branches:
+      - main
+    # 👇 Filter paths for the specific project
+    paths:
+      - 'apps/lit-wc-storybook/**'
+
+jobs:
+  publish-to-chromatic:
+    uses: ./.github/workflows/_reusable.publish-to-chromatic.yml
+    with:
+      # 👇 Working directory for the specific project
+      workingDir: 'apps/lit-wc-storybook'
+    secrets:
+      # 👇 Chromatic projectToken for the specific project
+      chromaticProjectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_LIT_WC_STORYBOOK }}
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
