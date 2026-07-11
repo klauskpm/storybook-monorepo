@@ -34,4 +34,6 @@ jobs:
           workingDir: apps/react-storybook
           # Telling chromatic to use bun to build the project
           buildCommand: bun run build-storybook
+          # Required output directory when using buildCommand
+          outputDir: tmp/chromatic
           token: ${{ secrets.GITHUB_TOKEN }}
