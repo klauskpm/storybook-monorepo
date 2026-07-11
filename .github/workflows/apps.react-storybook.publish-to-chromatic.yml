@@ -11,32 +11,9 @@ jobs:
   publish-to-chromatic:
     uses: ./.github/workflows/_reusable.publish-to-chromatic.yml
     with:
+      # 👇 Working directory for the specific project
       workingDir: 'apps/react-storybook'
     secrets:
+      # 👇 Chromatic projectToken for the specific project
       chromaticProjectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
       githubToken: ${{ secrets.GITHUB_TOKEN }}
-#    # Operating System
-#    runs-on: ubuntu-latest
-#    # Job steps
-#    steps:
-#      - uses: actions/checkout@v6
-#        with:
-#          fetch-depth: 0
-#
-#      # Setup bun
-#      - uses: oven-sh/setup-bun@v2
-#      - run: bun install
-#
-#      # Runs builds project and deploy to chromatic
-#      - uses: chromaui/action@latest
-#        # Options required for Chromatic's GitHub Action
-#        with:
-#          # 👇 Chromatic projectToken for the specific project
-#          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT_STORYBOOK }}
-#          # 👇 Working directory for the specific project
-#          workingDir: apps/react-storybook
-#          # Telling chromatic to use bun to build the project
-#          buildCommand: bun run build-storybook
-#          # Required output directory when using buildCommand
-#          outputDir: storybook-static
-#          token: ${{ secrets.GITHUB_TOKEN }}

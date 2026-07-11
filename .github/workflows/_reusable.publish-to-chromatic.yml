@@ -29,9 +29,9 @@ jobs:
       - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
-          # 👇 Chromatic projectToken for the specific project
+          # Chromatic projectToken for the specific project
           projectToken: ${{ secrets.chromaticProjectToken }}
-          # 👇 Working directory for the specific project
+          # Working directory for the specific project
           workingDir: ${{ inputs.workingDir }}
           # Telling chromatic to use bun to build the project
           buildCommand: bun run build-storybook
